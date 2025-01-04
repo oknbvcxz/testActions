@@ -7,7 +7,12 @@ jobs:
     steps:
     - name: 复制文件到虚拟机
       uses: actions/checkout@v4
-    - name: 安装依赖
-      run: npm install 
-    - name: 构建项目
-      run: npm run build
+    - name: 安装依赖和构建项目
+      run: |
+        npm install 
+        npm run build
+    - name: 部署
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: build
